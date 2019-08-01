@@ -1,0 +1,37 @@
+[
+  {
+    "classificationId": 6,
+    "classificationName": "html",
+    "parentId": 1
+  },
+  {
+    "classificationId": 7,
+    "classificationName": "css",
+    "parentId": 1
+  },
+  {
+    "classificationId": 8,
+    "classificationName": "javaScript",
+    "parentId": 1
+  },
+  {
+    "classificationId": 9,
+    "classificationName": "java",
+    "parentId": 2
+  },
+  {
+    "classificationId": 10,
+    "classificationName": "spring",
+    "parentId": 2
+  },
+  {
+    "classificationId": 11,
+    "classificationName": "spring Mvc",
+    "parentId": 2
+  },
+  {
+    "classificationId": 12,
+    "classificationName": "spring Boot",
+    "parentId": 2
+  }
+]

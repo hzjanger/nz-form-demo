@@ -1,0 +1,27 @@
+[
+  {
+    "classificationId": 1,
+    "classificationName": "前端",
+    "parentId": 0
+  },
+  {
+    "classificationId": 2,
+    "classificationName": "后台",
+    "parentId": 0
+  },
+  {
+    "classificationId": 3,
+    "classificationName": "人工智能",
+    "parentId": 0
+  },
+  {
+    "classificationId": 4,
+    "classificationName": "安卓",
+    "parentId": 0
+  },
+  {
+    "classificationId": 5,
+    "classificationName": "IOS",
+    "parentId": 0
+  }
+]

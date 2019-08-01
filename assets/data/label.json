@@ -1,0 +1,30 @@
+[
+  {
+    "labelId": 1,
+    "labelName": "java"
+  },
+  {
+    "labelId": 2,
+    "labelName": "javaScript"
+  },
+  {
+    "labelId": 3,
+    "labelName": "typeScript"
+  },
+  {
+    "labelId": 4,
+    "labelName": "mysql"
+  },
+  {
+    "labelId": 5,
+    "labelName": "scss"
+  },
+  {
+    "labelId": 6,
+    "labelName": "sass"
+  },
+  {
+    "labelId": 7,
+    "labelName": "less"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "title": "这是一个标题",
+  "primaryClassification": {
+    "classificationId": 1,
+    "classificationName": "前端",
+    "parentId": 0
+  },
+  "secondaryClassification": {
+    "classificationId": 7,
+    "classificationName": "css",
+    "parentId": 1
+  },
+  "accessType": "私有",
+  "label": [
+    {
+      "labelId": 2,
+      "labelName": "javaScript"
+    },
+    {
+      "labelId": 5,
+      "labelName": "scss"
+    }
+  ]
+}
