@@ -1,21 +1,91 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div nz-row nzType="flex" nzJustify="center" class="container">
+  <div nz-col nzSpan="12">
+    <form nz-form [formGroup]="articleForm" (ngSubmit)="submit()">
+      <div nz-row>
+        <div nz-col nzSpan="24">
+          <nz-form-label nzSpan="3">
+            标题
+          </nz-form-label>
+          <nz-form-control nzSpan="21">
+            <input nz-input placeholder="输入标题" formControlName="title">
+          </nz-form-control>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <nz-form-label nzSpan="6">一级分类</nz-form-label>
+          <nz-form-control nzSpan="18">
+            <nz-select nzAllowClear
+                       formControlName="primary"
+                       [compareWith]="compareFn"
+                       (ngModelChange)="selectPrimary()" nzPlaceHolder="选择一级分类" >
+              <div *ngIf="primaryClassificationList">
+                <nz-option *ngFor="let primaryClassification of primaryClassificationList"
+                           [nzValue]="primaryClassification"
+                           [nzLabel]="primaryClassification.classificationName"></nz-option>
+              </div>
+            </nz-select>
+          </nz-form-control>
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-form-label nzSpan="6">二级分类</nz-form-label>
+          <nz-form-control nzSpan="18">
+            <nz-select formControlName="secondary"
+                       [compareWith]="compareFn"
+                       nzAllowClear
+                       nzPlaceHolder="选择二级分类">
+              <div *ngIf="secondaryClassificationList">
+                <nz-option *ngFor="let secondaryClassification of secondaryClassificationList" [nzValue]="secondaryClassification" [nzLabel]="secondaryClassification.classificationName"></nz-option>
+              </div>
+            </nz-select>
+          </nz-form-control>
+        </div>
+      </div>
 
-<router-outlet></router-outlet>
+      <div nz-row formArrayName="label">
+        <div nz-col nzSpan="24">
+          <nz-form-label nzSpan="3">标签</nz-form-label>
+          <nz-form-control nzSpan="21">
+            <nz-checkbox-wrapper style="padding-top: .5rem;">
+              <div nz-row *ngIf="labelList">
+                <div nz-col nzSpan="8" *ngFor="let labelItem of label.controls; let i = index;">
+                  <label nz-checkbox [formControlName]="i">{{labelList[i].labelName}}</label>
+                </div>
+              </div>
+            </nz-checkbox-wrapper>
+          </nz-form-control>
+        </div>
+      </div>
+
+      <div nz-row>
+        <div nz-col nzSpan="24">
+          <nz-form-label nzSpan="3">发布类型</nz-form-label>
+          <nz-form-control nzSpan="21">
+            <nz-radio-group formControlName="accessType">
+              <label nz-radio nzValue="公开">公开</label>
+              <label nz-radio nzValue="私有">私有</label>
+            </nz-radio-group>
+          </nz-form-control>
+
+        </div>
+      </div>
+
+      <div nz-row nzType="flex" nzJustify="center">
+        <div nz-col>
+          <nz-form-item>
+            <nz-form-control>
+              <button nz-button type="button" (click)="getArticleInfo()">获取信息</button>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="12">
+    <pre>{{articleForm.value | json}}</pre>
+  </div>
+</div>
+
